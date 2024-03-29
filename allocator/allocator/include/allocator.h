@@ -2,29 +2,28 @@
 #define MATH_PRACTICE_AND_OPERATING_SYSTEMS_ALLOCATOR_H
 
 #include <cstddef>
-#include <utility>
 
 class allocator
 {
 
 public:
     
-    using block_size_t = size_t;
+    typedef size_t block_size_t;
     
-    using block_pointer_t = void *;
+    typedef void *block_pointer_t;
 
 public:
     
     virtual ~allocator() noexcept = default;
 
 public:
-
+    
     template<
         typename T,
-        typename ...Args>
+        typename ...args>
     inline static void construct(
         T *at,
-        Args &&... constructor_arguments);
+        args&&... constructor_arguments);
     
     template<
         typename T>
@@ -44,12 +43,12 @@ public:
 
 template<
     typename T,
-    typename ...Args>
+    typename ...args>
 inline void allocator::construct(
     T *at,
-    Args &&... constructor_arguments)
+    args&&... constructor_arguments)
 {
-    new (at) T(std::forward<Args>(constructor_arguments)...);
+    new(at) T(std::forward<args>(constructor_arguments)...);
 }
 
 template<
