@@ -8,8 +8,6 @@ set(CMAKE_CXX_STANDARD 23)
 #include(C:/Programming/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 add_subdirectory(allocator)
-add_subdirectory(arithmetic)
-add_subdirectory(associative_container)
 add_subdirectory(common)
 add_subdirectory(logger)
 add_subdirectory(cursal_work)
